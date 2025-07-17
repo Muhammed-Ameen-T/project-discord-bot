@@ -12,6 +12,9 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 
+app.use(express.json());
+
+
 // Create Discord client
 const client = new Client({
   intents: [
@@ -72,7 +75,7 @@ app.get('/auth/discord/callback', async (req, res) => {
   const code = req.query.code;
   console.log('OAuth2 callback query:', req.query);
   if (!code) return res.status(400).send('Missing authorization code');
-  
+
   try {
     const params = new URLSearchParams();
     params.append('client_id', process.env.DISCORD_CLIENT_ID);
