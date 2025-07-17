@@ -4,8 +4,7 @@ import { logger } from '../utils/logger.js';
 export async function connectDatabase() {
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+      autoIndex: true,
     });
     logger.info('Connected to MongoDB');
   } catch (error) {
