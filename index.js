@@ -14,6 +14,10 @@ dotenv.config();
 
 app.use(express.json());
 
+app.get('/ping', (req, res) => {
+  res.send('Bot is alive');
+});
+
 
 // Create Discord client
 const client = new Client({
